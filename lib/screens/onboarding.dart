@@ -9,7 +9,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          color: Color(0xffFA4848),
+          color: const Color(0xffFA4848),
           child: SingleChildScrollView(
             child: Column(
               children: onboardingData
@@ -21,14 +21,15 @@ class MyHomePage extends StatelessWidget {
                           onboardingSingleData["image_url"]!,
                         ),
                         Container(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                             left: 57,
                             right: 56,
                           ),
                           child: Text(
                             onboardingSingleData["text"]!,
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 18, color: Colors.white),
+                            style: const TextStyle(
+                                fontSize: 18, color: Colors.white),
                           ),
                         ),
                       ],
