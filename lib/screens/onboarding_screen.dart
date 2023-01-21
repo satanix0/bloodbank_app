@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:bloodbank_app/constants/onboarding_data.dart';
 import 'package:flutter/material.dart';
 
@@ -12,16 +14,18 @@ class MyOnboardingPage extends StatelessWidget {
           color: Colors.red,
           width: double.infinity,
           child: SingleChildScrollView(
-            child: Column(
+            scrollDirection: Axis.horizontal,
+            physics: BouncingScrollPhysics(),
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: onboardingData
+              children: onboarding_Data
                   .map(
                     (singleOnboardingScreen) => onboardingWidget(
                       imageUrl: singleOnboardingScreen["image_url"]!,
                       text: singleOnboardingScreen["text"]!,
                     ),
                   )
-                  .toList(),
+                  .toList(), // toList( because Column expects a List of Widgets as Children)
             ),
           ),
         ),
@@ -34,15 +38,12 @@ class MyOnboardingPage extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Container(
-          child: Image.asset(
-            imageUrl,
-          ),
+        Image.asset(
+          imageUrl,
         ),
         Container(
-          padding: EdgeInsets.only(
-            left: 57.0,
-            right: 56.0,
+          padding: EdgeInsets.symmetric(
+            horizontal: 56
           ),
           child: Text(
             text,

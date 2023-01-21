@@ -12,7 +12,7 @@ class MyHomePage extends StatelessWidget {
           color: const Color(0xffFA4848),
           child: SingleChildScrollView(
             child: Column(
-              children: onboardingData
+              children: onboarding_Data
                   .map(
                     (onboardingSingleData) => Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -21,10 +21,7 @@ class MyHomePage extends StatelessWidget {
                           onboardingSingleData["image_url"]!,
                         ),
                         Container(
-                          padding: const EdgeInsets.only(
-                            left: 57,
-                            right: 56,
-                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 57),
                           child: Text(
                             onboardingSingleData["text"]!,
                             textAlign: TextAlign.center,

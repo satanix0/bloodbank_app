@@ -1,3 +1,6 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:bloodbank_app/screens/onboarding.dart';
 import 'package:bloodbank_app/screens/onboarding_screen.dart';
 import 'package:bloodbank_app/screens/splash_screen.dart';
 import 'package:flutter/material.dart';

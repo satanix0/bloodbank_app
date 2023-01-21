@@ -1,4 +1,4 @@
-List<Map<String, String>> onboardingData = [
+List<Map<String, String>> onboarding_Data = [
   {
     "image_url": "assets/health_check.png",
     "text": "To be a responsible donor, you must get a check-up."
