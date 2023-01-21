@@ -33,6 +33,7 @@ class MyOnboardingPage extends StatelessWidget {
     );
   }
 
+  // Custom Widget.
   Widget onboardingWidget(
       {required String imageUrl, String text = "", int? index}) {
     return Column(
