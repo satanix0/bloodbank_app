@@ -1,6 +1,4 @@
 import 'package:bloodbank_app/screens/onboarding/onboarding0.dart';
-import 'package:bloodbank_app/screens/onboarding_screen.dart';
-import 'package:bloodbank_app/widgets/onboarding_widget.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,10 +12,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(
-      Duration(seconds: 3),
+      const Duration(seconds: 3),
       () => Navigator.pushNamed(context, '/onboarding'),
     );
-    // TODO: implement initState
     super.initState();
   }
 
@@ -25,13 +22,13 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Splash Screen",
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {},
-        child: Icon(
+        child: const Icon(
           Icons.add,
         ),
       ),
