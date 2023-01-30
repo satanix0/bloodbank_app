@@ -1,3 +1,4 @@
+import 'package:bloodbank_app/constants/routes.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding0.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +13,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(
-      const Duration(seconds: 3),
-      () => Navigator.pushNamed(context, '/onboarding'),
+      Duration(seconds: 3),
+      () => Navigator.pushNamed(context, Routes.onboardingScreen),
     );
     super.initState();
   }
