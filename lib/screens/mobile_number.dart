@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_unnecessary_containers, duplicate_ignore, sized_box_for_whitespace
 
 import 'dart:developer';
 
@@ -17,7 +16,7 @@ class LoginScreen extends StatelessWidget {
     log("---------------------------------------------");
     return Scaffold(
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -28,17 +27,15 @@ class LoginScreen extends StatelessWidget {
               Container(
                 child: Column(
                   children: [
-                    Container(
-                      child: const Text(
-                        "Enter your mobile number",
-                      ),
+                    const Text(
+                      "Enter your mobile number",
                     ),
                     Container(
                       // width: 365,
                       // 48 as padding on both sides and 265 to be width
                       // so the percentage is ~73%
                       width: MediaQuery.of(context).size.width * 0.73,
-                      margin: EdgeInsets.only(
+                      margin: const EdgeInsets.only(
                         top: 15,
                       ),
                       padding:
@@ -65,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                                   color: MyColors.redPrimary,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 18,
                               ),
                               SizedBox(
@@ -76,7 +73,7 @@ class LoginScreen extends StatelessWidget {
                                   //     {_phoneNumberController.text = value},
                                   controller: _phoneNumberController,
 
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     // prefix: Text(
                                     //   '+91',
                                     //   style: TextStyle(
