@@ -1,7 +1,7 @@
 import 'package:bloodbank_app/constants/colors.dart';
-import 'package:bloodbank_app/constants/routes.dart';
 import 'package:bloodbank_app/constants/shared_prefs.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -26,7 +26,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     onInit();
     super.initState();
   }
@@ -48,7 +47,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: Form(
               key: _formKey,
               child: Column(
-
                 children: [
                   textFieldWithLabel(
                     "Your Name",
@@ -102,13 +100,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
         children: [
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 18,
               color: Colors.white,
             ),
           ),
           TextFormField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               errorStyle: TextStyle(
                 color: Colors.white,
               ),
@@ -121,7 +119,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     )
                   : prefs.setString(userDataFieldKey, ""),
               print(userDataFieldKey),
-
             },
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -139,7 +136,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           "Your Name",
         ),
         TextFormField(
