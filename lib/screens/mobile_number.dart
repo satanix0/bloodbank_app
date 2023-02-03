@@ -1,13 +1,34 @@
 // ignore_for_file: avoid_unnecessary_containers, duplicate_ignore, sized_box_for_whitespace
 
+import 'dart:developer';
+
 import 'package:bloodbank_app/constants/colors.dart';
+import 'package:bloodbank_app/constants/routes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class MobileNumber extends StatelessWidget {
-  const MobileNumber({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
   Widget build(BuildContext context) {
+    TextEditingController _phoneNumberController = TextEditingController();
+    log("---------------------------------------------");
+    log("---------mobile_number.dart------------");
+    log("---------------------------------------------");
+
+    Future<void> _signUp() async {
+      if (_phoneNumberController.text.isNotEmpty) {
+        print("Your phone number is ${_phoneNumberController.text}");
+        // Navigator.pushNamed(context, Routes.otpScreen);
+      }
+    }
+
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -27,11 +48,15 @@ class MobileNumber extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: 365,
-                      margin: const EdgeInsets.only(
+                      // width: 365,
+                      // 48 as padding on both sides and 265 to be width
+                      // so the percentage is ~73%
+                      width: MediaQuery.of(context).size.width * 0.73,
+                      margin: EdgeInsets.only(
                         top: 15,
                       ),
-                      padding: const EdgeInsets.fromLTRB(60, 14, 60, 17),
+                      padding:
+                          const EdgeInsets.only(left: 40, top: 14, bottom: 17),
                       decoration: BoxDecoration(
                           border: Border.all(
                             width: 0.8,
@@ -57,9 +82,14 @@ class MobileNumber extends StatelessWidget {
                               const SizedBox(
                                 width: 25,
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 width: 180,
                                 child: TextField(
+                                  // validator: (value) => ,
+                                  // onChanged: (value) =>
+                                  //     {_phoneNumberController.text = value},
+                                  controller: _phoneNumberController,
+
                                   decoration: InputDecoration(
                                     // prefix: Text(
                                     //   '+91',
@@ -89,9 +119,23 @@ class MobileNumber extends StatelessWidget {
               ),
 
               ElevatedButton(
-                onPressed: () => {},
+                style: ButtonStyle(
+                  fixedSize: MaterialStateProperty.all(
+                    Size(
+                      MediaQuery.of(context).size.width * 0.73,
+                      53,
+                    ),
+                  ),
+                ),
+                onPressed: _signUp,
                 child: const Text("Login"),
               ),
+
+              TextButton(
+                  onPressed: () => {
+                        Navigator.pushNamed(context, Routes.signUpScreen),
+                      },
+                  child: Text("Sign UP")),
 
               // Container(
               //   height: 53,
