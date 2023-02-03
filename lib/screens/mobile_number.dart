@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_unnecessary_containers, duplicate_ignore, sized_box_for_whitespace
 
 import 'dart:developer';
 
@@ -31,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -42,17 +41,15 @@ class _LoginScreenState extends State<LoginScreen> {
               Container(
                 child: Column(
                   children: [
-                    Container(
-                      child: const Text(
-                        "Enter your mobile number",
-                      ),
+                    const Text(
+                      "Enter your mobile number",
                     ),
                     Container(
                       // width: 365,
                       // 48 as padding on both sides and 265 to be width
                       // so the percentage is ~73%
                       width: MediaQuery.of(context).size.width * 0.73,
-                      margin: EdgeInsets.only(
+                      margin: const EdgeInsets.only(
                         top: 15,
                       ),
                       padding:
@@ -80,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               const SizedBox(
-                                width: 25,
+                                width: 18,
                               ),
                               SizedBox(
                                 width: 180,
@@ -90,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   //     {_phoneNumberController.text = value},
                                   controller: _phoneNumberController,
 
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     // prefix: Text(
                                     //   '+91',
                                     //   style: TextStyle(
@@ -132,11 +129,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
 
               TextButton(
-                  onPressed: () => {
-                        Navigator.pushNamed(context, Routes.signUpScreen),
-                      },
-                  child: Text("Sign UP")),
-
+                onPressed: () =>
+                    {Navigator.pushNamed(context, Routes.signUpScreen)},
+                child: const Text("sign up"),
+              ),
               // Container(
               //   height: 53,
               //   width: 263,

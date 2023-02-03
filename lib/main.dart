@@ -1,6 +1,10 @@
 // ignore_for_file: unused_import, prefer_const_constructors
 
+import 'package:bloodbank_app/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 import 'package:bloodbank_app/constants/routes.dart';
+
 import 'package:bloodbank_app/screens/all_messages.dart';
 import 'package:bloodbank_app/screens/donors_map.dart';
 import 'package:bloodbank_app/screens/find_donors.dart';
@@ -14,18 +18,16 @@ import 'package:bloodbank_app/screens/onboarding/onboarding1.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding2.dart';
 import 'package:bloodbank_app/screens/otp_screen.dart';
 import 'package:bloodbank_app/screens/sign_up_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-
-import 'firebase_options.dart';
 import 'screens/splash_screen.dart';
 
+import 'package:flutter/material.dart';
+
 Future<void> main() async {
+  runApp(const MyApp());
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -38,13 +40,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.red,
           elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ButtonStyle(
-                  // backgroundColor: MaterialStatePropertyAll(Color(0xA8FF0E0E))))
-                  backgroundColor: MaterialStateColor.resolveWith(
-            // ((states) => Color.fromARGB(168.3, 255, 14, 14)),
-            ((states) => Color(0xa8ff0e0e)),
-            // 255*0.6
-          )))
+            style: ButtonStyle(
+              // backgroundColor: MaterialStatePropertyAll(Color(0xA8FF0E0E))))
+              backgroundColor: MaterialStateColor.resolveWith(
+                // ((states) => Color.fromARGB(168.3, 255, 14, 14)),
+                ((states) => Color(0xa8ff0e0e)),
+                // 255*0.6
+              ),
+            ),
+          )
           // buttonTheme:
           ),
       // home: SplashScreen(),

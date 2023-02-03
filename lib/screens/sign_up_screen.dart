@@ -27,7 +27,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     onInit();
     super.initState();
   }
@@ -101,13 +100,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
         children: [
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 18,
               color: Colors.white,
             ),
           ),
           TextFormField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               errorStyle: TextStyle(
                 color: Colors.white,
               ),
@@ -130,6 +129,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget customFormWidget() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          "Your Name",
+        ),
+        TextFormField(
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter some text';
+            }
+            return null;
+          },
+        ),
+      ],
     );
   }
 }
