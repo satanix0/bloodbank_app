@@ -1,3 +1,4 @@
+import 'package:bloodbank_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
@@ -25,10 +26,26 @@ class Home extends StatelessWidget {
           ),
         ),
       ),
-      body: SafeArea(
-        child: SizedBox(
-          width: double.infinity,
-          child: homeInfoBoxes(),
+    );
+  }
+
+  Widget bloodGroupInfoWidget(context) {
+    // 148/360 41%
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.41,
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: const [
+              Text(
+                "Hello World",
+              ),
+              Text(
+                "Hello World",
+              ),
+            ],
+          ),
         ),
       ),
     );
