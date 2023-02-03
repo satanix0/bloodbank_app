@@ -10,10 +10,8 @@ class Home extends StatelessWidget {
       key: _scaffoldKey,
       drawer: Drawer(
         child: ListView(
-          children: [
-            Container(
-              child: Text("Tiles"),
-            ),
+          children: const [
+            Text("Tiles"),
           ],
         ),
       ),
@@ -22,7 +20,7 @@ class Home extends StatelessWidget {
           onPressed: () => {
             _scaffoldKey.currentState!.openDrawer(),
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.menu,
           ),
         ),
@@ -40,8 +38,8 @@ class Home extends StatelessWidget {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.all(29.0),
-          child: Text("hello Hrithik"),
+          margin: const EdgeInsets.all(29.0),
+          child: const Text("hello Hrithik"),
         ),
         // the row with two columns
         Row(
@@ -54,13 +52,13 @@ class Home extends StatelessWidget {
 
   Column bloodBankInfoBox() {
     return Column(
-      children: [Text("Blood Group"), Text("Blood Goup ")],
+      children: const [Text("Blood Group"), Text("Blood Goup ")],
     );
   }
 
   Column bloodBankInfoStatus() {
     return Column(
-      children: [Text("Blood Group"), Text("Blood Goup ")],
+      children: const [Text("Blood Group"), Text("Blood Goup ")],
     );
   }
 }

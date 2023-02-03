@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import, prefer_const_constructors
 
 import 'package:bloodbank_app/constants/routes.dart';
+import 'package:bloodbank_app/firebase_options.dart';
 import 'package:bloodbank_app/screens/all_messages.dart';
 import 'package:bloodbank_app/screens/donors_map.dart';
 import 'package:bloodbank_app/screens/find_donors.dart';
@@ -14,12 +15,17 @@ import 'package:bloodbank_app/screens/onboarding/onboarding1.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding2.dart';
 import 'package:bloodbank_app/screens/otp_screen.dart';
 import 'package:bloodbank_app/screens/sign_up_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/splash_screen.dart';
 
-void main() {
+Future<void> main() async {
   runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }
 
 class MyApp extends StatelessWidget {
