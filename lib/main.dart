@@ -18,9 +18,15 @@ import 'package:bloodbank_app/screens/onboarding/onboarding1.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding2.dart';
 import 'package:bloodbank_app/screens/otp_screen.dart';
 import 'package:bloodbank_app/screens/sign_up_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+
+import 'firebase_options.dart';
 import 'screens/splash_screen.dart';
 
 import 'package:flutter/material.dart';
+bool shouldUseFirestoreEmulator = false;
 
 Future<void> main() async {
   runApp(const MyApp());
@@ -28,6 +34,10 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  if (shouldUseFirestoreEmulator) {
+    FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+  }
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
