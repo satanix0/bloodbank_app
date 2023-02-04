@@ -1,6 +1,7 @@
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/constants/routes.dart';
 import 'package:bloodbank_app/constants/shared_prefs.dart';
+import 'package:bloodbank_app/utils/firestore_utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,24 +14,50 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  final _formKey = GlobalKey<FormState>(); 
+  final _formKey = GlobalKey<FormState>();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   late SharedPreferences prefs;
-  FirebaseFirestore db = FirebaseFirestore.instance;
-
-  Future<void> addDataToFirestore() async {
-    await db.collection("users").add({"name": "Hrithik"}).then(
-      (DocumentReference doc) =>
-          print('DocumentSnapshot added with ID: ${doc.id}'),
-    );
-  }
+  // FirebaseFirestore db = FirebaseFirestore.instance;
 
   Future<void> addDataToSharedPrefs() async {
     if (_formKey.currentState!.validate()) {
       print("Valid");
       _formKey.currentState!.save();
       // prefs.setString(key, value)
-      Navigator.pushNamed(context, Routes.home);
+
+      await createFirestoreData();
+      _scaffoldKey.currentState?.showBottomSheet(
+        (context) => Container(
+          height: 100,
+          color: Colors.red,
+          child: Center(
+            child: Text("Data Saved"),
+          ),
+        ),
+      );
+
+      // Navigator.pushNamed(context, Routes.home);
     }
+  }
+
+  Future<void> createFirestoreData() async {
+    var response = FireStoreMethods.updateOrCreateFirestoreData(
+      (prefs.getString(SharedPrefsConstant.name.toString()) ?? "No Name") +
+          DateTime.now().millisecondsSinceEpoch.toString(),
+      "users",
+      {
+        "name": prefs.getString(SharedPrefsConstant.name.toString()),
+        "dateOfBirth":
+            prefs.getString(SharedPrefsConstant.dateOfBirth.toString()),
+        "age": prefs.getString(SharedPrefsConstant.age.toString()),
+        "healthConditions":
+            prefs.getString(SharedPrefsConstant.healthConditions.toString()),
+        "bloodGroup":
+            prefs.getString(SharedPrefsConstant.bloodGroup.toString()),
+      },
+      isMerge: false,
+    );
+    debugPrint(response.toString());
   }
 
   @override
@@ -47,6 +74,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -84,9 +112,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: const Text('Submit'),
                   ),
                   ElevatedButton(
-                    onPressed: addDataToFirestore,
-                    child: const Text('Add to Firestore'),
+                    onPressed: createFirestoreData,
+                    child: const Text('Submit'),
                   ),
+                  // ElevatedButton(
+                  //   onPressed: addDataToFirestore,
+                  //   child: const Text('Add to Firestore'),
+                  // ),
+                  // ElevatedButton(
+                  //   onPressed: readDataFromFirestore,
+                  //   child: const Text('REad from Firestore'),
+                  // ),
                 ],
               ),
             ),
