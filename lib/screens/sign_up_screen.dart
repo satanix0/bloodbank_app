@@ -13,7 +13,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>(); 
   late SharedPreferences prefs;
   FirebaseFirestore db = FirebaseFirestore.instance;
 
@@ -39,7 +39,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.initState();
   }
 
-  // declaring a function so that the initState can call it without asynchrony
+  // declaring a function so that the initState can call it without async
   void onInit() async {
     prefs = await SharedPreferences.getInstance();
   }
