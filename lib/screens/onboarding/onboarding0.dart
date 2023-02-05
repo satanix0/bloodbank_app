@@ -15,7 +15,7 @@ class OnboardingPage extends StatelessWidget {
           onTap: () => {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => OnboardingPage1()),
+              MaterialPageRoute(builder: (context) => const OnboardingPage1()),
             )
           },
           child: Container(

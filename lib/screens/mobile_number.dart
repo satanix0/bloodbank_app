@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
 
-  TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
 
   Future<void> _loginIn() async {
     if (_phoneNumberController.text.isNotEmpty) {
