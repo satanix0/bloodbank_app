@@ -32,10 +32,10 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  // Using Cloud FireStore
-  if (shouldUseFirestoreEmulator) {
-    FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
-  }
+
+  // if (shouldUseFirestoreEmulator) {
+  //   FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+  // }
   runApp(const MyApp());
 }
 
@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
       // home: SplashScreen(),
       initialRoute: Routes.home,
       routes: {
-        Routes.splashScreen: (context) => SplashScreen(),
+        "/splash": (context) => SplashScreen(),
         Routes.onboardingScreen: (context) => OnboardingPage(),
         Routes.onboarding1Screen: (context) => OnboardingPage1(),
         Routes.onboarding2Screen: (context) => OnboardingPage2(),

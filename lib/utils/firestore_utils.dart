@@ -5,14 +5,18 @@ class FireStoreMethods {
 
   // add data to firestore
   static Future<String> addDataToFirestore(
-      String collectionName, Map<String, dynamic> data) async {
+    String collectionName,
+    Map<String, dynamic> data,
+  ) async {
     late String response;
-// TODO: add a response type variable
+// FIXME: add a response type variable
     await db
         .collection(collectionName)
-        .add(data)
+        .add(data) //POST METHOD
         .then(
-          (DocumentReference doc) => {response = doc.id},
+          (DocumentReference doc) => {
+            response = doc.id,
+          },
         )
         .catchError((onError) => {response = onError.toString()});
 
@@ -22,6 +26,8 @@ class FireStoreMethods {
 
   static Future<void> readDataFromFirestore() async {
     await db.collection("users").get().then(
+      //GET METHOD
+
       (QuerySnapshot querySnapshot) {
         querySnapshot.docs.forEach((doc) {
           print(doc.data());
@@ -37,7 +43,10 @@ class FireStoreMethods {
     await db
         .collection(collectionName)
         .doc(id)
-        .set(data, SetOptions(merge: isMerge));
+        .set(
+        data,
+        SetOptions(
+            merge: isMerge)); // merge FALSE -> PUT .... merge TRUE -> PATCH
   }
 
   static Future<void> deleteData(String id, String collectionName) async {
