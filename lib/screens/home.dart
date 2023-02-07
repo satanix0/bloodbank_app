@@ -91,16 +91,23 @@ class _HomeState extends State<Home> {
   Widget bloodDonationInfoWidget(context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.41,
+      height: 238,
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: const [
               Text(
-                "Hello World",
+                "Donor Status",
+              ),
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 93.0,
               ),
               Text(
-                "Hello World",
+                "You can Donate!",
               ),
             ],
           ),
@@ -114,44 +121,44 @@ class _HomeState extends State<Home> {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.41,
       child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Text(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 28.0),
+              child: Text(
                 "Hello World",
               ),
-              Stack(
-                fit: StackFit.loose,
-                alignment: Alignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 32.0),
-                    child: Image.asset(
-                      Resources.bloodDrop,
-                      fit: BoxFit.fitWidth,
-                    ),
+            ),
+            Stack(
+              fit: StackFit.loose,
+              alignment: Alignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 32.0),
+                  child: Image.asset(
+                    Resources.bloodDrop,
+                    fit: BoxFit.fitWidth,
                   ),
-                  Positioned(
-                    top: 10,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: Center(
-                      child: Text(
-                        _bloodGroup.toString(),
-                        style: TextStyle(
-                          fontSize: 50.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w800,
-                        ),
+                ),
+                Positioned(
+                  top: 10,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Center(
+                    child: Text(
+                      _bloodGroup.toString(),
+                      style: TextStyle(
+                        fontSize: 50.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
                       ),
                     ),
                   ),
-                ],
-              ),
-            ],
-          ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
