@@ -41,7 +41,7 @@ Future<void> main() async {
   runApp(
     DevicePreview(
       enabled: true,
-      tools: [
+      tools: const [
         ...DevicePreview.defaultTools,
         // const CustomPlugin(),
       ],
@@ -90,7 +90,7 @@ class MyApp extends StatelessWidget {
         // buttonTheme:
       ),
       // home: SplashScreen(),
-      initialRoute: Routes.loginScreen,
+      initialRoute: Routes.findDonors,
       routes: {
         "/splash": (context) => SplashScreen(),
         Routes.onboardingScreen: (context) => OnboardingPage(),

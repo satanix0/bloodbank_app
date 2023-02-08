@@ -41,10 +41,10 @@ class FindDonors extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  child: Text("Male"),
+                  child: const Text("Male"),
                 ),
                 Container(
-                  child: Text("Female"),
+                  child: const Text("Female"),
                 ),
               ],
             ),
@@ -54,13 +54,13 @@ class FindDonors extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    child: Text("Family"),
+                    child: const Text("Family"),
                   ),
                   Container(
-                    child: Text("Friend"),
+                    child: const Text("Friend"),
                   ),
                   Container(
-                    child: Text("Other"),
+                    child: const Text("Other"),
                   ),
                 ],
               )),
@@ -73,14 +73,14 @@ class FindDonors extends StatelessWidget {
               icon: const Icon(Icons.keyboard_arrow_down),
               // Array of age from 18 to 60
               items: [
-                DropdownMenuItem(
-                  child: Text("Select Age"),
+                 DropdownMenuItem(
                   value: "Select Age",
+                  child: Text("Select Age"),
                 ),
                 for (var i = 18; i <= 60; i++)
                   DropdownMenuItem(
-                    child: Text(i.toString()),
                     value: i,
+                    child: Text(i.toString()),
                   )
               ],
               onChanged: (value) {},
@@ -92,11 +92,12 @@ class FindDonors extends StatelessWidget {
               //   });
               // },
             ),
+            // Changes to horizontal even though it's under column
             flex: Axis.horizontal,
           ),
           ElevatedButton(
             onPressed: () => {Navigator.pushNamed(context, Routes.donorsMap)},
-            child: Text("Find Donors"),
+            child: const Text("Find Donors"),
           ),
         ],
       ),
@@ -105,6 +106,7 @@ class FindDonors extends StatelessWidget {
 
   Flex titleWithWidget(String title, Widget widget,
       {Axis flex = Axis.vertical}) {
+    // default direction is vertical.
     return Flex(
       direction: flex,
       crossAxisAlignment: CrossAxisAlignment.start,

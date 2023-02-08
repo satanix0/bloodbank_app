@@ -63,19 +63,19 @@ class _HomeState extends State<Home> {
                     child:
                         Image.asset(Resources.bloodHeart, fit: BoxFit.fitWidth),
                   ),
-                  Text(
+                  const Text(
                     "Donor #32457",
                     style: TextStyle(
                       fontSize: 18,
                     ),
                   ),
-                  Text(
+                  const Text(
                     "Donor Status : Approved",
                     style: TextStyle(
                       fontSize: 12,
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                 ],
               ),
             ),
@@ -98,16 +98,17 @@ class _HomeState extends State<Home> {
                 "name": "Settings",
               },
             ]
-                .map((e) => ListTile(
-                      trailing: Icon(
-                        Icons.keyboard_arrow_right_outlined,
-                      ),
-                      title: Text(e["name"].toString()),
-                      onTap: () {
-                        Navigator.pushNamed(context, e["route"].toString());
-                      },
-                    ))
-                .toList(),
+                .map(
+                  (e) => ListTile(
+                    trailing: const Icon(
+                      Icons.keyboard_arrow_right_outlined,
+                    ),
+                    title: Text(e["name"].toString()),
+                    onTap: () {
+                      Navigator.pushNamed(context, e["route"].toString());
+                    },
+                  ),
+                ).toList(),
 
             // ListTile(
             //   trailing: Icon(
@@ -120,7 +121,7 @@ class _HomeState extends State<Home> {
             // ),
             TextButton(
               onPressed: getApiData,
-              child: Text("Sign Out"),
+              child: const Text("Sign Out"),
             ),
           ],
         ),
@@ -131,7 +132,7 @@ class _HomeState extends State<Home> {
               // Scaffold.of(context).openDrawer();
               _scaffoldKey.currentState!.openDrawer();
             },
-            icon: Icon(Icons.menu)),
+            icon: const Icon(Icons.menu)),
       ),
       body: Container(
         // color: MyColors.redPrimary,
@@ -150,10 +151,10 @@ class _HomeState extends State<Home> {
                   Column(
                     children: [
                       Container(
-                        margin: EdgeInsets.all(29.0),
+                        margin: const EdgeInsets.all(29.0),
                         child: Text(
                           "Hello $name",
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                           ),
                         ),
@@ -177,9 +178,9 @@ class _HomeState extends State<Home> {
                       child: ElevatedButton(
                           onPressed: () =>
                               Navigator.pushNamed(context, Routes.findDonors),
-                          child: Text("Find Donors"))),
+                          child: const Text("Find Donors"))),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
                 Padding(
@@ -189,9 +190,9 @@ class _HomeState extends State<Home> {
                       child: ElevatedButton(
                           onPressed: () => Navigator.pushNamed(
                               context, Routes.incomingRequests),
-                          child: Text("Donate Blood"))),
+                          child: const Text("Donate Blood"))),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
               ],
@@ -245,8 +246,8 @@ class _HomeState extends State<Home> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 19.0),
+                const Padding(
+                  padding: EdgeInsets.only(top: 19.0),
                   child: Text(
                     "Hello World",
                   ),
@@ -268,9 +269,9 @@ class _HomeState extends State<Home> {
                         bottom: 0,
                         child: Center(
                           child: Text(
-                            _bloodGroup.toString(),
-                            style: TextStyle(
-                              fontSize: 50.0,
+                            _bloodGroup != null ? _bloodGroup.toString() : 'A+',
+                            style: const TextStyle(
+                              fontSize: 45.0,
                               color: Colors.white,
                               fontWeight: FontWeight.w800,
                             ),
@@ -288,33 +289,33 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Column homeInfoBoxes() {
-    return Column(
-      children: [
-        Container(
-          margin: const EdgeInsets.all(29.0),
-          child: const Text("hello Hrithik"),
-        ),
-        // the row with two columns
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [bloodBankInfoBox(), bloodBankInfoStatus()],
-        )
-      ],
-    );
-  }
+  // Column homeInfoBoxes() {
+  //   return Column(
+  //     children: [
+  //       Container(
+  //         margin: const EdgeInsets.all(29.0),
+  //         child: const Text("hello Hrithik"),
+  //       ),
+  //       // the row with two columns
+  //       Row(
+  //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //         children: [bloodBankInfoBox(), bloodBankInfoStatus()],
+  //       )
+  //     ],
+  //   );
+  // }
 
-  Column bloodBankInfoBox() {
-    return Column(
-      children: const [Text("Blood Group"), Text("Blood Goup ")],
-    );
-  }
+  // Column bloodBankInfoBox() {
+  //   return Column(
+  //     children: const [Text("Blood Group"), Text("Blood Goup ")],
+  //   );
+  // }
 
-  Column bloodBankInfoStatus() {
-    return Column(
-      children: const [Text("Blood Group"), Text("Blood Goup ")],
-    );
-  }
+  // Column bloodBankInfoStatus() {
+  //   return Column(
+  //     children: const [Text("Blood Group"), Text("Blood Goup ")],
+  //   );
+  // }
 }
 
 
