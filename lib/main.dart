@@ -90,7 +90,7 @@ class MyApp extends StatelessWidget {
         // buttonTheme:
       ),
       // home: SplashScreen(),
-      initialRoute: Routes.findDonors,
+      initialRoute: Routes.splashScreen,
       routes: {
         "/splash": (context) => SplashScreen(),
         Routes.onboardingScreen: (context) => OnboardingPage(),
